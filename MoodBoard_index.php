@@ -67,10 +67,10 @@ if(isset($_POST['GO']))
       }
    else if(isset($_POST['Genres'])) //if only Genre is filled, return all records of this genre
       {
-        echo "<br/>";
-        echo "Into Loop";
+        //echo "<br/>";
+        //echo "Into Loop";
         $genre = $_POST['Genres'];
-        $query =  "SELECT songName, artist, youtubeLink FROM moodBoard WHERE genre ='" .  $genre . "';";
+        $query =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
 
         while($row = $result->fetch_assoc())

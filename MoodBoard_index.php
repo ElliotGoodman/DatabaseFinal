@@ -63,7 +63,28 @@ if(isset($_POST['GO']))
     //conditions
    if(isset($_POST['Genres']) && isset($_POST['Moods'])) //if both forms are filled, return only the records of the specified Genre and Mood
       {
+        $genre = $_POST['Genres'];
+        $mood = $_POST['Moods'];
+        $genreQuery =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
+        $moodQuery =  "SELECT mood FROM moods WHERE mood ='" .  $mood . "';";
+        $genreResult = $mysqli->query($genreQuery);
+        $moodResult = $mysqli->query($moodQuery);
 
+        while($row = $genreResult->fetch_assoc())
+        {
+          foreach($row as $r)
+            {
+            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
+            }
+        }
+
+        while($row = $moodResult->fetch_assoc())
+        {
+          foreach($row as $r)
+            {
+            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
+            }
+        }
       }
    else if(isset($_POST['Genres'])) //if only Genre is filled, return all records of this genre
       {

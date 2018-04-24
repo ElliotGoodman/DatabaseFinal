@@ -14,7 +14,7 @@
   <select name="Genres" id="Genres">
     <option value="" disabled selected>Choose a genre</option>
     <option value="Rock">Rock</option>
-    <option value="Comedy">Comedy</option>
+    <option value="Soundtrack">Soundtrack</option>
     <option value="Ukelele">Ukelele</option>
     <option value="Theatre Nerd">Theatre Nerd</option>
     <option value="Alternative">Alternative</option>
@@ -50,11 +50,16 @@ if(isset($_POST['GO']))
    $mysqli = new mysqli('sql209.epizy.com', 'epiz_21511524', 'xa8uCY2sZ9iF', 'epiz_21511524_MusicMoodBoard');
             if ($mysqli->connect_errno)   //error checker
                 {
-                echo "Failed to connect to MySQLI";
-                exit();
+                // echo "Failed to connect to MySQLI"
+                die("Failed to connect to MySQLI");
                 }
             else
               echo "Ey bby it actually worked lel";
+              echo "<br/>";
+              echo "Genre set as: " . $_POST['Genres'];
+              echo "<br/>";
+              echo "Mood set as: " . $_POST['Moods'];
+
     //conditions
    if(isset($_POST['Genres']) && isset($_POST['Moods'])) //if both forms are filled, return only the records of the specified Genre and Mood
       {
@@ -62,6 +67,18 @@ if(isset($_POST['GO']))
       }
    else if(isset($_POST['Genres'])) //if only Genre is filled, return all records of this genre
       {
+        echo "<br/>";
+        echo "Into Loop";
+        $genre = $_POST['Genres'];
+        $query =  "SELECT songName, artist, youtubeLink FROM moodBoard WHERE genre ='" .  $genre . "';";
+        $result = $mysqli->query($query);
+
+        while($row = $result->fetch_assoc())
+        {
+          foreach($row as $r) {
+            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
+          }
+        }
 
       }
    else if(isset($_POST['Mood']))  //see above
@@ -72,6 +89,7 @@ if(isset($_POST['GO']))
       {
 
       }
+
   }
 ?>
 

@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> <!--nice style sheet-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"><!-- Optional theme -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>Musical Mood Board </title>
+  <style>
+    table
+      {
+      border-collapse: collapse; /*So we don;t have duplicate borders for EVERY cell*/
+      }
+
+      table, th, td /*the actual borders*/
+      {
+      border: 1px solid black;
+      padding: 1px 2px; /*top&bottom, right&left*/
+      }
+  </style>
 </head>
 <body>
 <h1>Musical Mood Board </h1>
@@ -66,7 +81,7 @@ if(isset($_POST['GO']))
       {
         $genre = $_POST['Genres'];
         $mood = $_POST['Moods'];
-        $genreQuery =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
+        /*$genreQuery =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $moodQuery =  "SELECT mood FROM moods WHERE mood ='" .  $mood . "';";
         $genreResult = $mysqli->query($genreQuery);
         $moodResult = $mysqli->query($moodQuery);
@@ -77,15 +92,34 @@ if(isset($_POST['GO']))
             {
             print("\n<br/>I have " . $r . " in my pocket\n<br/>");
             }
-        }
+        }*/
+        $query =  "SELECT mainTable.songName, artist, youtubeLink FROM mainTable
+        INNER JOIN moods
+        ON mainTable.songName = moods.songName
+        WHERE moods.mood ='" .  $mood . "' AND mainTable.genre ='" .  $genre . "';";
+        $result = $mysqli->query($query);
 
-        while($row = $moodResult->fetch_assoc()) //Returns mood, though this may be unnecessary
-        {
+//tablestuff------------------------------------------
+        echo "<table>";//table form
+        echo "<thead>";//table heads
+        echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
+          while($fieldInfo = mysqli_fetch_field($result))
+            {
+            echo "<th>". $fieldInfo->name. "</th>";
+            }
+        echo "</thead>";
+
+        while($row = $result->fetch_assoc())
+          {
+          echo "<tr>"; //tr is the start of the row
           foreach($row as $r)
             {
-            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
+            echo "<td>" . $r . "</td>"; //td is a new cell
             }
-        }
+          echo "</tr>";
+          }
+        echo "</table>";
+//end tablestuff-----------------------------------------
       }
    else if(isset($_POST['Genres'])) //if only Genre is filled, return all records of this genre
       {
@@ -95,14 +129,27 @@ if(isset($_POST['GO']))
         $query =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
 
-        while($row = $result->fetch_assoc())
-        {
-          foreach($row as $r)
-          {
-          print("\n<br/>I have only this genre " . $r . " in my pocket\n<br/>");
-          }
-        }
+//tablestuff------------------------------------------
+        echo "<table>";//table form
+        echo "<thead>";//table heads
+        echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
+          while($fieldInfo = mysqli_fetch_field($result))
+            {
+            echo "<th>". $fieldInfo->name. "</th>";
+            }
+        echo "</thead>";
 
+        while($row = $result->fetch_assoc())
+          {
+          echo "<tr>"; //tr is the start of the row
+          foreach($row as $r)
+            {
+            echo "<td>" . $r . "</td>"; //td is a new cell
+            }
+          echo "</tr>";
+          }
+        echo "</table>";
+//end tablestuff-----------------------------------------
       }
    else if(isset($_POST['Moods']))  //see above
       {
@@ -113,30 +160,57 @@ if(isset($_POST['GO']))
         WHERE moods.mood ='" .  $mood . "';";
         $result = $mysqli->query($query);
 
+//tablestuff------------------------------------------
+        echo "<table>";//table form
+        echo "<thead>";//table heads
+        echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
+          while($fieldInfo = mysqli_fetch_field($result))
+            {
+            echo "<th>". $fieldInfo->name. "</th>";
+            }
+        echo "</thead>";
+
         while($row = $result->fetch_assoc())
-        {
-          foreach($row as $r)
           {
-          print("\n<br/>I have only this mood " . $r . " in my pocket\n<br/>");
+          echo "<tr>"; //tr is the start of the row
+          foreach($row as $r)
+            {
+            echo "<td>" . $r . "</td>"; //td is a new cell
+            }
+          echo "</tr>";
           }
-        }
+        echo "</table>";
+//end tablestuff-----------------------------------------
 
       }
    else //if neither are filled, return everything
     {
-      $query = "SELECT * FROM mainTable
+      $query = "SELECT mainTable.songname, moods.mood, artist, youtubeLink FROM mainTable
       INNER JOIN moods
       ON mainTable.songName = moods.songName;";
+      $result = $mysqli->query($query);
+//tablestuff------------------------------------------
+      echo "<table>";//table form
+      echo "<thead>";//table heads
+      echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
+        while($fieldInfo = mysqli_fetch_field($result))
+          {
+          echo "<th>". $fieldInfo->name. "</th>";
+          }
+      echo "</thead>";
 
       while($row = $result->fetch_assoc())
-      {
-        foreach($row as $r)
         {
-        print("\n<br/>I have only this mood " . $r . " in my pocket\n<br/>");
+        echo "<tr>"; //tr is the start of the row
+        foreach($row as $r)
+          {
+          echo "<td>" . $r . "</td>"; //td is a new cell
+          }
+        echo "</tr>";
         }
+      echo "</table>";
+//end tablestuff-----------------------------------------
       }
-    }
-
   }
 ?>
 

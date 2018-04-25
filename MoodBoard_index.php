@@ -41,7 +41,8 @@
 <input name="GO" value="GO" type="submit">
 </form>
 
-
+<br>
+<p>Enter nothing to see the whole table!</p>
 <p>Song adding coming soon!</p>
 
 <?php
@@ -70,7 +71,7 @@ if(isset($_POST['GO']))
         $genreResult = $mysqli->query($genreQuery);
         $moodResult = $mysqli->query($moodQuery);
 
-        while($row = $genreResult->fetch_assoc())
+        while($row = $genreResult->fetch_assoc()) //Returns name, artist, and link
         {
           foreach($row as $r)
             {
@@ -78,7 +79,7 @@ if(isset($_POST['GO']))
             }
         }
 
-        while($row = $moodResult->fetch_assoc())
+        while($row = $moodResult->fetch_assoc()) //Returns mood, though this may be unnecessary
         {
           foreach($row as $r)
             {
@@ -96,20 +97,45 @@ if(isset($_POST['GO']))
 
         while($row = $result->fetch_assoc())
         {
-          foreach($row as $r) {
-            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
+          foreach($row as $r)
+          {
+          print("\n<br/>I have only this genre " . $r . " in my pocket\n<br/>");
           }
         }
 
       }
-   else if(isset($_POST['Mood']))  //see above
+   else if(isset($_POST['Moods']))  //see above
       {
+        $mood = $_POST['Moods'];
+        $query =  "SELECT mainTable.songName, artist, youtubeLink FROM mainTable
+        INNER JOIN moods
+        ON mainTable.songName = moods.songName
+        WHERE moods.mood ='" .  $mood . "';";
+        $result = $mysqli->query($query);
+
+        while($row = $result->fetch_assoc())
+        {
+          foreach($row as $r)
+          {
+          print("\n<br/>I have only this mood " . $r . " in my pocket\n<br/>");
+          }
+        }
 
       }
    else //if neither are filled, return everything
-      {
+    {
+      $query = "SELECT * FROM mainTable
+      INNER JOIN moods
+      ON mainTable.songName = moods.songName;";
 
+      while($row = $result->fetch_assoc())
+      {
+        foreach($row as $r)
+        {
+        print("\n<br/>I have only this mood " . $r . " in my pocket\n<br/>");
+        }
       }
+    }
 
   }
 ?>

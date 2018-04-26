@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head> <!--nice style sheet-->
@@ -67,15 +71,15 @@ pattern="[a-zA-Z0-9^\s\x3A\x26?!\x2F\x2E]{1,30}"
 title="30 characters max. Only alphanumeric characters, spaces, and the following characters are allowed: &amp; / : ! ? ."/>
 <!--space, colon, ampersand, forward slash,period allowed-->
 <br>
-<small>Alphanumeric characters, !, and ? only, up to 30 characters total</small>
+<small>30 characters max. Only alphanumeric characters, spaces, and the following are allowed: / ! ? : .</small>
 
 <br><br>
 <p>Add a Youtube link if possible</p>
 <input type="text" name="youtubeLink"
 placeholder="Link here"
-pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F]{1,200}"
-title="200 characters max. Only alphanumeric characters, spaces and the following characters are allowed: &amp; / : = _ ! ? ."/>
-<!--colon, ampersand, equals sign, forward slash, period, underscore -->
+pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F\x2D]{1,200}"
+title="200 characters max. Only alphanumeric characters, spaces and the following are allowed: &amp; / : = _ ! ? . -"/>
+<!--colon, ampersand, equals sign, forward slash, period, underscore, hyphen -->
 
 <br><br>
 <input name="ADD" value="ADD" type="submit">
@@ -103,6 +107,7 @@ $genre = $_POST['Genres'];
 $artist = $_POST['artist'];
 $mood = $_POST['Moods'];
 $link = $_POST['youtubeLink'];
+$_SESSION['ytlink'] = $link;
 
 $mainQuery = "INSERT INTO mainTable (songName, genre, artist, youtubeLink) VALUES ('" . $_POST['songName'] . "','$genre','$artist','$link');";
 $mainResult = $mysqli->query($mainQuery);
@@ -111,13 +116,12 @@ $moodQuery = "INSERT INTO moods (songName, mood) VALUES ('" . $_POST['songName']
 $moodResult = $mysqli->query($moodQuery);
 
 if(isset($_SESSION['ytlink'])) {
-  header("Location: ./ytlink.php");
+  header("Location:ytpage.php");
 }
 else {
-  echo "No YouTube link!";
+  echo "YouTube link not set properly.";
 }
-  
-//also this straight up just doesn't put anything into the SQL table.???
+
 ?>
   </div>
 </body>

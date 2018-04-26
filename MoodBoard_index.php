@@ -207,6 +207,8 @@ if(isset($_GET['GO']))
       }
   }
 ?>
+    
+    <a href=AddSong.php>Add a song here!</a>
 
 </body>
 </html>

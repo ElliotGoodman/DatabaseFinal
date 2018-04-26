@@ -16,15 +16,20 @@
       border: 1px solid black;
       padding: 1px 2px; /*top&bottom, right&left*/
       }
+    .center
+      {
+      text-align:center;
+      }
   </style>
 </head>
 <body>
+  <div class="center">
 <h1>Musical Mood Board </h1>
 <p>Search Music</p>
 
 
 <!--The two forms for people to choose what kind of music to search for-->
-<form action="" method="POST">
+<form action="" method="GET">
 <p>by Genre</p>
   <select name="Genres" id="Genres">
     <option value="" disabled selected>Choose a genre</option>
@@ -33,7 +38,7 @@
     <option value="Ukelele">Ukelele</option>
     <option value="Theatre Nerd">Theatre Nerd</option>
     <option value="Alternative">Alternative</option>
-    <option value="Pop?">Pop</option>
+    <option value="Pop">Pop</option>
   </select>
 
 
@@ -61,7 +66,7 @@
 <p>Song adding coming soon!</p>
 
 <?php
-if(isset($_POST['GO']))
+if(isset($_GET['GO']))
    {//connect to database
    $mysqli = new mysqli('sql209.epizy.com', 'epiz_21511524', 'xa8uCY2sZ9iF', 'epiz_21511524_MusicMoodBoard');
             if ($mysqli->connect_errno)   //error checker
@@ -72,27 +77,16 @@ if(isset($_POST['GO']))
             else
               echo "Ey bby it actually worked lel";
               echo "<br/>";
-              echo "Genre set as: " . $_POST['Genres'];
+              echo "Genre set as: " . $_GET['Genres'];
               echo "<br/>";
-              echo "Mood set as: " . $_POST['Moods'];
+              echo "Mood set as: " . $_GET['Moods'];
 
     //conditions
-   if(isset($_POST['Genres']) && isset($_POST['Moods'])) //if both forms are filled, return only the records of the specified Genre and Mood
+   if(isset($_GET['Genres']) && isset($_GET['Moods'])) //if both forms are filled, return only the records of the specified Genre and Mood
       {
-        $genre = $_POST['Genres'];
-        $mood = $_POST['Moods'];
-        /*$genreQuery =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
-        $moodQuery =  "SELECT mood FROM moods WHERE mood ='" .  $mood . "';";
-        $genreResult = $mysqli->query($genreQuery);
-        $moodResult = $mysqli->query($moodQuery);
+        $genre = $_GET['Genres'];
+        $mood = $_GET['Moods'];
 
-        while($row = $genreResult->fetch_assoc()) //Returns name, artist, and link
-        {
-          foreach($row as $r)
-            {
-            print("\n<br/>I have " . $r . " in my pocket\n<br/>");
-            }
-        }*/
         $query =  "SELECT mainTable.songName, artist, youtubeLink FROM mainTable
         INNER JOIN moods
         ON mainTable.songName = moods.songName
@@ -100,7 +94,7 @@ if(isset($_POST['GO']))
         $result = $mysqli->query($query);
 
 //tablestuff------------------------------------------
-        echo "<table>";//table form
+        echo "<table align = center>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -121,16 +115,16 @@ if(isset($_POST['GO']))
         echo "</table>";
 //end tablestuff-----------------------------------------
       }
-   else if(isset($_POST['Genres'])) //if only Genre is filled, return all records of this genre
+   else if(isset($_GET['Genres'])) //if only Genre is filled, return all records of this genre
       {
         //echo "<br/>";
         //echo "Into Loop";
-        $genre = $_POST['Genres'];
+        $genre = $_GET['Genres'];
         $query =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
 
 //tablestuff------------------------------------------
-        echo "<table>";//table form
+        echo "<table align = center>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -151,9 +145,9 @@ if(isset($_POST['GO']))
         echo "</table>";
 //end tablestuff-----------------------------------------
       }
-   else if(isset($_POST['Moods']))  //see above
+   else if(isset($_GET['Moods']))  //see above
       {
-        $mood = $_POST['Moods'];
+        $mood = $_GET['Moods'];
         $query =  "SELECT mainTable.songName, artist, youtubeLink FROM mainTable
         INNER JOIN moods
         ON mainTable.songName = moods.songName
@@ -161,7 +155,7 @@ if(isset($_POST['GO']))
         $result = $mysqli->query($query);
 
 //tablestuff------------------------------------------
-        echo "<table>";//table form
+        echo "<table align = center>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -190,7 +184,7 @@ if(isset($_POST['GO']))
       ON mainTable.songName = moods.songName;";
       $result = $mysqli->query($query);
 //tablestuff------------------------------------------
-      echo "<table>";//table form
+      echo "<table align = center>";//table form
       echo "<thead>";//table heads
       echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
         while($fieldInfo = mysqli_fetch_field($result))

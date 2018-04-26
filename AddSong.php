@@ -74,7 +74,11 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 <small>30 characters max. Only alphanumeric characters, spaces, and the following are allowed: / ! ? : .</small>
 
 <br><br>
-<p>Add a Youtube link if possible</p>
+<p>Add a embedded Youtube link if possible</p>
+<small> To get a Youtube video's embedded link, click the "share" button <br>
+under the Youtube video, then click "embed", and copy the url that's listed in quotes.</small>
+<br>
+
 <input type="text" name="youtubeLink"
 placeholder="Link here"
 pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F\x2D]{1,200}"
@@ -85,6 +89,13 @@ title="200 characters max. Only alphanumeric characters, spaces and the followin
 <input name="ADD" value="ADD" type="submit">
 </form>
 
+<br><br><br>
+<form class="center" action = "http://naganadel.epizy.com/MoodBoard_index.php">
+<input name="search" value="Back to the Mood Board" type="submit">
+</form>
+
+
+<!--the following is the php for adding to the table via the ADD button-->
 <?php
 if(isset($_POST['ADD']))
    {//connect to database

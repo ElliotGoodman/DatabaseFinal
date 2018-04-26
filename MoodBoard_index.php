@@ -60,10 +60,13 @@
 <br><br>
 <input name="GO" value="GO" type="submit">
 </form>
-
 <br>
 <p>Enter nothing to see the whole table!</p>
 
+<br><br>
+<form class="center" action = "http://naganadel.epizy.com/AddSong.php">
+<input name="search" value="Add a Song Here!" type="submit">
+</form>
 
 <?php
 if(isset($_GET['GO']))
@@ -207,8 +210,6 @@ if(isset($_GET['GO']))
       }
   }
 ?>
-    
-    <a href="AddSong.php">Add a song here!</a>
 
 </body>
 </html>

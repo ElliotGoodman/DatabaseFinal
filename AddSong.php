@@ -23,7 +23,9 @@
 
 <input type="text" name="songName"
 placeholder="Song name here" required
-pattern="[a-zA-Z0-9^\s]{1,50}"/> <!--between 1 and 50 alphanumeric characters-->
+pattern="[a-zA-Z0-9^\s!?]{1,50}"
+title="50 characters max. Alphanumeric characters, ?, !, and spaces are allowed."/> <!--between 1 and 50 alphanumeric characters, space and ! allowed-->
+
 <br>
 <small>Only alphanumeric characters and spaces are allowed, up to 50</small>
 
@@ -61,7 +63,9 @@ pattern="[a-zA-Z0-9^\s]{1,50}"/> <!--between 1 and 50 alphanumeric characters-->
 <p>Who's the artist?</p>
 <input type="text" name="artist"
 placeholder="Artist here"
-pattern="[a-zA-Z0-9^\s\x3A\x26?!\x2F\x2E]{1,30}"/><!--\x26 stands for ampersand, \s stands for space,\x2E for period-->
+pattern="[a-zA-Z0-9^\s\x3A\x26?!\x2F\x2E]{1,30}"
+title="30 characters max. Only alphanumeric characters, spaces, and the following characters are allowed: &amp; / : ! ? ."/>
+<!--space, colon, ampersand, forward slash,period allowed-->
 <br>
 <small>Alphanumeric characters, !, and ? only, up to 30 characters total</small>
 
@@ -69,7 +73,9 @@ pattern="[a-zA-Z0-9^\s\x3A\x26?!\x2F\x2E]{1,30}"/><!--\x26 stands for ampersand,
 <p>Add a Youtube link if possible</p>
 <input type="text" name="youtubeLink"
 placeholder="Link here"
-pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F]{1,200}"/><!--this is allowing single and double quotes for some reason????-->
+pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F]{1,200}"
+title="200 characters max. Only alphanumeric characters, spaces and the following characters are allowed: &amp; / : = _ ! ? ."/>
+<!--colon, ampersand, equals sign, forward slash, period, underscore -->
 
 <br><br>
 <input name="ADD" value="ADD" type="submit">
@@ -84,7 +90,6 @@ if(isset($_POST['ADD']))
                 // echo "Failed to connect to MySQLI"
                 die("Failed to connect to MySQLI");
                 }
-            else
     }
 if(isset($_POST['songName']))
   {

@@ -110,8 +110,13 @@ $mainResult = $mysqli->query($mainQuery);
 $moodQuery = "INSERT INTO moods (songName, mood) VALUES ('" . $_POST['songName'] . "','$mood');";
 $moodResult = $mysqli->query($moodQuery);
 
-header("Location: ./ytlink.php");
-    
+if(isset($_SESSION['ytlink'])) {
+  header("Location: ./ytlink.php");
+}
+else {
+  echo "No YouTube link!";
+}
+  
 //also this straight up just doesn't put anything into the SQL table.???
 ?>
   </div>

@@ -63,7 +63,7 @@
 
 <br>
 <p>Enter nothing to see the whole table!</p>
-<p>Song adding coming soon!</p>
+
 
 <?php
 if(isset($_GET['GO']))

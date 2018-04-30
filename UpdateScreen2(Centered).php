@@ -42,7 +42,9 @@
 </style>
 </head>
 <body>
-
+	<div class="center">
+<h1>Update a Song</h1>
+<br>
 <form class = "center" action="" method="POST">
 
 <!--The name of the song to change-->

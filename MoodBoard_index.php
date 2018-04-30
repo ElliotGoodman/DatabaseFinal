@@ -78,8 +78,8 @@ if(isset($_GET['GO']))
                 die("Failed to connect to MySQLI");
                 }
             else
-              echo "Ey bby it actually worked lel";
-              echo "<br/>";
+          //  echo "Ey bby it actually worked lel";
+          //  echo "<br/>";
               echo "Genre set as: " . $_GET['Genres'];
               echo "<br/>";
               echo "Mood set as: " . $_GET['Moods'];

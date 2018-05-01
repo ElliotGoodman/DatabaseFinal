@@ -25,7 +25,7 @@
 <body>
   <div class="center">
 <h1>Musical Mood Board </h1>
-<p>Search Music</p>
+<h4>Search Music</h4>
 
 
 <!--The two forms for people to choose what kind of music to search for-->
@@ -41,7 +41,7 @@
     <option value="Pop">Pop</option>
   </select>
 
-
+<br><br>
 <p>and/or by Mood</p>
   <select name="Moods" id="Moods">
     <option value="" disabled selected>Choose a mood</option>

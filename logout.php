@@ -28,6 +28,6 @@
 	
 	
 	// Redirect to login
-	header("Location: login.php");
+	header("Location: MoodBoard_index.php");
 	exit;
 ?>

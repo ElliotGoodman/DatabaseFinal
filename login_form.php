@@ -1,5 +1,3 @@
-/*https and session checks not necessary on this page*/
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

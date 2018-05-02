@@ -22,6 +22,19 @@ exit;
   {
   text-align:center;
   }
+  h1{
+      background-color: black;
+      color: white;
+      font-family: Arial;
+    }
+    h4{
+      color: slategray;
+      font-family: Arial;
+    }
+    p{
+      font-family: Arial;
+      font-size: 1.5em;
+    }
 </style>
 </head>
 <body>

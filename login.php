@@ -57,7 +57,7 @@
      $password = sha1($password);
      
      //build query
-     $query = "SELECT `id` FROM `users` WHERE `userName` = '$username' AND '$password';";
+     $query = "SELECT `id` FROM `user` WHERE `username` = '$username' AND `password` = '$password';";
      
      //sometimes it's nice to print the query, that way you know what SQL you're working with.
 //     print $query;
@@ -87,10 +87,7 @@
              require "login_form.php";
              exit;
          }
-     }
-		   
-        // Else, there was no result
-        else {
+     }else {
           $error = 'Login Error: Please contact the system administrator.';
           require "login_form.php";
           exit;

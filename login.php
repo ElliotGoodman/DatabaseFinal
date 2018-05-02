@@ -38,7 +38,7 @@
 		$password = empty($_POST['password']) ? '' : $_POST['password'];
 	        
 //        // Require the credentials
-        require_once '../db.conf';
+        require_once 'db.conf';
 //        
 //        // Connect to the database
         $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);

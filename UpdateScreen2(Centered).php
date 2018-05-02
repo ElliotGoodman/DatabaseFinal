@@ -12,7 +12,8 @@ exit;
 $loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
 if (!$loggedIn) {
 header("Location: login.php");
-exit;?>
+exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -166,7 +167,7 @@ if(isset($_POST['songName']))
   echo "Song name is valid!";
   }
 else {
-     "Song name is not valid.";
+     echo "Song name is not valid.";
      }
 ?>
 

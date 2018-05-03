@@ -11,8 +11,14 @@ exit;
 ?>
 
 <!DOCTYPE html>
-<html>
-<head> <!--nice style sheet-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    	<link href="app.css" rel="stylesheet" type="text/css">
+    <link href="../jQuery/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <script src="../jQuery/external/jquery/jquery.js"></script>
+    <script src="../jQuery/jquery-ui.min.js"></script>
+    <!--nice style sheet-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"><!-- Optional theme -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -23,12 +29,12 @@ exit;
   text-align:center;
   }
   h1{
-      background-color: black;
+      background-color: darkorange;
       color: white;
       font-family: Arial;
     }
     h4{
-      color: slategray;
+      color: black;
       font-family: Arial;
     }
     p{
@@ -112,7 +118,7 @@ title="200 characters max. Only alphanumeric characters, spaces and the followin
 
 <br><br><br>
 <form class="center" action = "http://naganadel.epizy.com/MoodBoard_index.php">
-<input name="search" value="Back to the Mood Board" type="submit">
+<input name="search" value="Back to the MoodBoard" type="submit">
 </form>
 
 
@@ -154,7 +160,8 @@ else {
   echo "YouTube link not set properly.";
 }
 
+require "footer.php";
 ?>
-  </div>
+  </div> 
 </body>
 </html>

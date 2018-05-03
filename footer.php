@@ -2,7 +2,7 @@
 /*Written by Aaryn Johns and references code for Bootstrap footer at: https://mdbootstrap.com/components/bootstrap-footer/ */
 ?>
 <!DOCTYPE html>
-    <html>
+    <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Footer for MoodBoard</title>
@@ -28,7 +28,13 @@
                 <h5 class="text-uppercase">Links</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Meet the Creators!</a>
+                        <?php
+                        $getWholeUrl = "https://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";
+                        
+                        if($getWholeUrl != "https://naganadel.epizy.com/MTC.php"){
+                            echo "<a href='MTC.php'>Meet the Creators!</a>";
+                        }
+                        ?>
                     </li>
                     <li>
                         <?php 
@@ -46,7 +52,7 @@
                             }else{
                                 $getWholeUrl = "https://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";
                                 
-                                if ($getWholeUrl == "https://naganadel.epizy.com/login.php"){
+                                if ($getWholeUrl == "https://naganadel.epizy.com/login.php" || $getWholeUrl == "https://naganadel.epizy.com/MTC.php"){
                                    echo "<a href='MoodBoard_index.php'>Back to Home</a>"; 
                                 }
                             }

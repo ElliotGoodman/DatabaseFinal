@@ -11,8 +11,9 @@ exit;
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
     <link href="app.css" rel="stylesheet" type="text/css">
     <link href="../jQuery/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <script src="../jQuery/external/jquery/jquery.js"></script>

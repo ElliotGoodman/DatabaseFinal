@@ -28,11 +28,13 @@ exit;
       {
       border-collapse: collapse; /*So we don;t have duplicate borders for EVERY cell*/
       }
-
-      table, th, td /*the actual borders*/
+      table{
+       border: 1px solid black;   
+      }
+      th, td /*the actual borders*/
       {
       border: 1px solid black;
-      padding: 1px 2px; /*top&bottom, right&left*/
+      padding: 10px;
       }
     .center
       {

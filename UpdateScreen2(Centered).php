@@ -62,12 +62,12 @@ exit;
     	}
 	}
 h1{
-      background-color: black;
+      background-color: darkorange;
       color: white;
       font-family: Arial;
     }
     h4{
-      color: slategray;
+      color: black;
       font-family: Arial;
     }
     p{
@@ -196,39 +196,8 @@ if(isset($_POST['songList']))
                 }
     }
 ?>
-<br/><br/>
-<!-- Original source code for footer: https://mdbootstrap.com/components/bootstrap-footer/      -->
-<!--Footer-->
-<footer class="page-footer font-small black">
-
-    <!--Footer Links-->
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Meet the creators!</a>
-                    </li>
-                    <li>
-                        <a href="logout.php">Logout to return to the homepage!</a>
-                    </li>
-<!--
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
--->
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--/.Footer Links-->
-
-</footer>
-<!--/.Footer-->
-
+<?php 
+    require "footer.php";
+    ?>
 </body>
 </html>

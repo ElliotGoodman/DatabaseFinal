@@ -51,40 +51,8 @@
             </div>
         </form>
     </div>
-<br/><br/>
-<!-- Original source code for footer: https://mdbootstrap.com/components/bootstrap-footer/      -->
-<!--Footer-->
-<footer class="page-footer font-small black">
-
-    <!--Footer Links-->
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Meet the creators!</a>
-                    </li>
-<!--
-                    <li>
-                        <a href="login.php">Login to Update and Delete</a>
-                    </li>
--->
-<!--
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
--->
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--/.Footer Links-->
-
-</footer>
-<!--/.Footer-->
+    <?php 
+    require "footer.php";
+    ?>
 </body>
 </html>

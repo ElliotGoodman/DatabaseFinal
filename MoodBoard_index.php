@@ -40,6 +40,11 @@ exit;
       {
       text-align:center;
       }
+    .tablecenter
+    	{
+    	margin-left: auto;
+    	margin-right: auto;
+    	}
     h1{
       background-color: darkorange;
       color: white;
@@ -131,7 +136,7 @@ if(isset($_GET['GO']))
         WHERE moods.mood ='" .  $mood . "' AND mainTable.genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
 //tablestuff------------------------------------------
-        echo "<table align = center>";//table form
+        echo "<table class = 'tablecenter'>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -159,7 +164,7 @@ if(isset($_GET['GO']))
         $query =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
 //tablestuff------------------------------------------
-        echo "<table align = center>";//table form
+        echo "<table class = 'tablecenter'>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -188,7 +193,7 @@ if(isset($_GET['GO']))
         WHERE moods.mood ='" .  $mood . "';";
         $result = $mysqli->query($query);
 //tablestuff------------------------------------------
-        echo "<table align = center>";//table form
+        echo "<table class = 'tablecenter'>";//table form
         echo "<thead>";//table heads
         echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
           while($fieldInfo = mysqli_fetch_field($result))
@@ -215,7 +220,7 @@ if(isset($_GET['GO']))
       ON mainTable.songName = moods.songName;";
       $result = $mysqli->query($query);
 //tablestuff------------------------------------------
-      echo "<table align = center>";//table form
+      echo "<table class = 'tablecenter'>";//table form
       echo "<thead>";//table heads
       echo "<br> Number of Entries:" . $result->num_rows; //the number of entries
         while($fieldInfo = mysqli_fetch_field($result))

@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ($_SERVER['HTTPS'] !== 'on') {
 $redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 header("Location: $redirectURL");
@@ -29,7 +29,7 @@ exit;
       border-collapse: collapse; /*So we don;t have duplicate borders for EVERY cell*/
       }
       table{
-       border: 1px solid black;   
+       border: 1px solid black;
       }
       th, td /*the actual borders*/
       {
@@ -62,7 +62,7 @@ exit;
 <body>
   <div class="center">
 <h1>Musical Mood Board </h1>
-<h4>Search Music</h4>
+<h2>Search Music</h2>
 
 
 <!--The two forms for people to choose what kind of music to search for-->
@@ -120,19 +120,16 @@ if(isset($_GET['GO']))
               echo "Genre set as: " . $_GET['Genres'];
               echo "<br/>";
               echo "Mood set as: " . $_GET['Moods'];
-
     //conditions
    if(isset($_GET['Genres']) && isset($_GET['Moods'])) //if both forms are filled, return only the records of the specified Genre and Mood
       {
         $genre = $_GET['Genres'];
         $mood = $_GET['Moods'];
-
         $query =  "SELECT mainTable.songName, artist, youtubeLink FROM mainTable
         INNER JOIN moods
         ON mainTable.songName = moods.songName
         WHERE moods.mood ='" .  $mood . "' AND mainTable.genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
-
 //tablestuff------------------------------------------
         echo "<table align = center>";//table form
         echo "<thead>";//table heads
@@ -142,7 +139,6 @@ if(isset($_GET['GO']))
             echo "<th>". $fieldInfo->name. "</th>";
             }
         echo "</thead>";
-
         while($row = $result->fetch_assoc())
           {
           echo "<tr>"; //tr is the start of the row
@@ -162,7 +158,6 @@ if(isset($_GET['GO']))
         $genre = $_GET['Genres'];
         $query =  "SELECT songName, artist, youtubeLink FROM mainTable WHERE genre ='" .  $genre . "';";
         $result = $mysqli->query($query);
-
 //tablestuff------------------------------------------
         echo "<table align = center>";//table form
         echo "<thead>";//table heads
@@ -172,7 +167,6 @@ if(isset($_GET['GO']))
             echo "<th>". $fieldInfo->name. "</th>";
             }
         echo "</thead>";
-
         while($row = $result->fetch_assoc())
           {
           echo "<tr>"; //tr is the start of the row
@@ -193,7 +187,6 @@ if(isset($_GET['GO']))
         ON mainTable.songName = moods.songName
         WHERE moods.mood ='" .  $mood . "';";
         $result = $mysqli->query($query);
-
 //tablestuff------------------------------------------
         echo "<table align = center>";//table form
         echo "<thead>";//table heads
@@ -203,7 +196,6 @@ if(isset($_GET['GO']))
             echo "<th>". $fieldInfo->name. "</th>";
             }
         echo "</thead>";
-
         while($row = $result->fetch_assoc())
           {
           echo "<tr>"; //tr is the start of the row
@@ -215,7 +207,6 @@ if(isset($_GET['GO']))
           }
         echo "</table>";
 //end tablestuff-----------------------------------------
-
       }
    else //if neither are filled, return everything
     {
@@ -232,7 +223,6 @@ if(isset($_GET['GO']))
           echo "<th>". $fieldInfo->name. "</th>";
           }
       echo "</thead>";
-
       while($row = $result->fetch_assoc())
         {
         echo "<tr>"; //tr is the start of the row
@@ -247,7 +237,7 @@ if(isset($_GET['GO']))
       }
   }
 ?>
-      <?php 
+      <?php
     require "footer.php";
     ?>
 </body>

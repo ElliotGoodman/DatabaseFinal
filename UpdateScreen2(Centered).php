@@ -35,6 +35,11 @@ exit;
   {
   text-align:center;
   }
+.tablecenter
+	{
+	margin-left: auto;
+	margin-right: auto;
+	}
 *
 {
   box-sizing: border-box;
@@ -255,7 +260,7 @@ if(isset($_POST['songList']))
 		ON mainTable.songName = moods.songName;";
 		$result = $mysqli->query($query);
 //tablestuff------------------------------------------
-		echo "<table align = center>";//table form
+		echo "<table class = 'tablecenter'>";//table form
     echo "<thead>";//table heads
       while($fieldInfo = mysqli_fetch_field($result))
         {

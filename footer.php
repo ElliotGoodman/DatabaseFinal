@@ -45,9 +45,12 @@
                                 $getWholeUrl = "https://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";
                                 
                                 if ($getWholeUrl == "https://naganadel.epizy.com/MoodBoard_index.php"){
-                                   echo "<a href='UpdateScreen2(Centered).php'>Update and Delete from MoodBoard</a>"; 
+                                   echo "<a href='UpdateScreen2(Centered).php'>Update MoodBoard</a>"; 
                                 }else{
                                     echo "<a href='MoodBoard_index.php'>Back to Home</a>";
+                                }
+                                if ($getWholeUrl == "https://naganadel.epizy.com/UpdateScreen2(Centered).php"){
+                                   echo "<a href='UpdateScreen2(Centered).php'>Delete from MoodBoard</a>"; 
                                 }
                             }else{
                                 $getWholeUrl = "https://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 if ($_SERVER['HTTPS'] !== 'on') {
 $redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 header("Location: $redirectURL");
@@ -8,7 +8,6 @@ if(!session_start()) {
 header("Location: error.php");
 exit;
 }
-
 $loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
 if (!$loggedIn) {
 header("Location: login.php");
@@ -36,25 +35,30 @@ exit;
   {
   text-align:center;
   }
-
 *
 {
   box-sizing: border-box;
 }
-
 .column
 	{
     float: left;
     width: 50%;
 	}
-
 .row:after
 	{
     content: "";
     display: table;
     clear: both;
 	}
-
+table
+	{
+	border-collapse: collapse; /*So we don;t have duplicate borders for EVERY cell*/
+	}
+	table, th, td /*the actual borders*/
+	{
+	border: 1px solid black;
+	padding: 1px 2px; /*top&bottom, right&left*/
+	}
 @media screen and (max-width: 600px)
 	{
     .column
@@ -85,11 +89,13 @@ h1{
 	<div class="center">
 <h1>Update a Song</h1>
 <br>
+
+
 <form class = "center" action="" method="POST">
 
 <!--The name of the song to change-->
 <p><h4> Type the name of the song you want to update here </h4></p>
-<input type="text" name="songName" placeholder="Song name here" required
+<input type="text" name="oldSongName" placeholder="Song name here" required
 pattern="[a-zA-Z0-9^\s!?]{1,50}" title="50 characters max. Alphanumeric characters, ?, !, and spaces are allowed."/>
 <br>
 
@@ -106,7 +112,7 @@ pattern="[a-zA-Z0-9^\s!?]{1,50}" title="50 characters max. Alphanumeric characte
 <br>
 
 <p><medium>Type its new artist here</medium></p>
-<input type="text" name="artist"
+<input type="text" name="newArtist"
 placeholder="New artist here"
 pattern="[a-zA-Z0-9^\s\x3A\x26?!\x2F\x2E]{1,30}"
 title="30 characters max. Only alphanumeric characters, spaces, and the following characters are allowed: &amp; / : ! ? ."/>
@@ -117,7 +123,7 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 <!--Column2-->
   <div class="column">
 <p><medium>Select its new genre here</medium></p>
-<select name="Genres" id="Genres">
+<select name="newGenre" id="Genre">
   <option value="" disabled selected>Choose a genre</option>
   <option value="Rock">Rock</option>
   <option value="Soundtrack">Soundtrack</option>
@@ -130,7 +136,7 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 <br>
 
 <p><medium>Select its new mood here</medium></p>
-<select name="Moods" id="Moods">
+<select name="newMood" id="Mood">
   <option value="" selected>Choose a mood</option>
   <option value="Happy">Happy</option>
   <option value="Epic">Epic</option>
@@ -151,53 +157,126 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 <!--EndColumns-->
 
 <p><medium>Paste its new embedded youtube URL here </medium></p>
-<input type="text" name="youtubeLink"
+<input type="text" name="newYoutubeLink"
 placeholder="New link here"
 pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F\x2D]{1,200}"
 title="200 characters max. Only alphanumeric characters, spaces and the following are allowed: &amp; / : = _ ! ? . -"/>
 <br>
 <br>
+
+<!--update bootun-->
+<input class= "center" name="update" value="Update Song" type="submit">
 </form>
 
 
 <!--the following is the php for adding to the table via the ADD button-->
 <?php
 if(isset($_POST['update']))
-   {//connect to database
+{//connect to database
    $mysqli = new mysqli('sql209.epizy.com', 'epiz_21511524', 'xa8uCY2sZ9iF', 'epiz_21511524_MusicMoodBoard');
             if ($mysqli->connect_errno)   //error checker
                 {
                 // echo "Failed to connect to MySQLI"
                 die("Failed to connect to MySQLI");
                 }
-    }
-if(isset($_POST['songName']))
-  {
-  echo "Song name is valid!";
-  }
-else {
-     echo "Song name is not valid.";
-     }
+//echo "am connect";
+		if($_POST['oldSongName'] != "")
+		{
+		$oldName = $_POST['oldSongName'];
+		echo "<br>Old name is" . $oldName ;
+			if($_POST['newSongName'] != "")
+  			{
+  			echo "<br> Song name set to change";
+				echo $_POST['newSongName'] . "is the new song name.";
+				$name = $_POST['newSongName'];
+				$mainQuery = "UPDATE mainTable SET songName = '$name' WHERE songName = '$oldName' ;";
+				$mainResult = $mysqli->query($mainQuery);
+				$moodQuery = "UPDATE moods SET songName = '$name' WHERE songName = '$oldName' ;";
+				$moodResult = $mysqli->query($moodQuery);
+  			}
+			if($_POST['newArtist'] != "")
+				{
+				echo "<br>Song artist set to change";
+				$artist = $_POST['newArtist'];
+				$query = "UPDATE mainTable SET artist = '$artist' WHERE songName = '$oldName' ;";
+				$result = $mysqli->query($query);
+				echo $_POST['newArtist'];
+				}
+			if($_POST['newGenre'] != "")
+				{
+     		echo "<br>newGenre set to change";
+				$genre = $_POST['newGenre'];
+				$query = "UPDATE mainTable SET genre = '$genre' WHERE songName = '$oldName' ;";
+				$result = $mysqli->query($query);
+     		}
+			if($_POST['newMood'] != "")
+				{
+				echo "<br>Mood set to change";
+				$mood = $_POST['newMood'];
+				$query = "UPDATE moods SET mood = '$mood' WHERE songName = '$oldName' ;";//grade A+ 11/10 clarity of code right here
+				$result = $mysqli->query($query);
+				}
+			if($_POST['newYoutubeLink'] != "")
+				{
+				echo "<br>Link set to change";
+				$link = $_POST['newYoutubeLink'];
+				$query = "UPDATE mainTable SET newYoutubeLink = '$link' WHERE songName = '$oldName' ;";
+				$result = $mysqli->query($query);
+				}
+		}
+else
+	{
+	echo "Bro you didn't set the original song's name";
+	}
+}
 ?>
 
 
 <!-- allow the admin to see the entire song list to choose what to update-->
-<form>
+<form action="" method="POST">
 <input class= "center" name="songList" value="See All Songs" type="submit">
 </form>
 
 <?php
+//show whoel tabel
 if(isset($_POST['songList']))
-   {//connect to database
+{
    $mysqli = new mysqli('sql209.epizy.com', 'epiz_21511524', 'xa8uCY2sZ9iF', 'epiz_21511524_MusicMoodBoard');
-            if ($mysqli->connect_errno)   //error checker
-                {
-                // echo "Failed to connect to MySQLI"
-                die("Failed to connect to MySQLI");
-                }
-    }
+  	if ($mysqli->connect_errno)   //error checking
+        {
+        echo "Failed to connect to MySQLI";
+        die("Failed to connect to MySQLI");
+        }
+
+		else
+		{
+		$query = "SELECT mainTable.songname, moods.mood, artist, youtubeLink FROM mainTable
+		INNER JOIN moods
+		ON mainTable.songName = moods.songName;";
+		$result = $mysqli->query($query);
+//tablestuff------------------------------------------
+		echo "<table align = center>";//table form
+    echo "<thead>";//table heads
+      while($fieldInfo = mysqli_fetch_field($result))
+        {
+        echo "<th>". $fieldInfo->name. "</th>";
+        }
+      echo "</thead>";
+      while($row = $result->fetch_assoc())
+        {
+        echo "<tr>"; //tr is the start of the row
+        foreach($row as $r)
+          {
+          echo "<td>" . $r . "</td>"; //td is a new cell
+          }
+        echo "</tr>";
+        }
+      echo "</table>";
+		}
+}
 ?>
-<?php 
+
+<?php
     require "footer.php";
     ?>
 </body>

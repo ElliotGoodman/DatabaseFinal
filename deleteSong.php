@@ -3,6 +3,11 @@
 <!-- This document was created on 04 May 2018 by Andrew Krall, 16190080-->
 <!-- Purpose: CS2830/CS3380 Final Project-->
 
+<?php
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
+?>
+
 <html>
     
     <head>
@@ -63,18 +68,16 @@
                      //First, delete from the mainTable.
                      $sql = "DELETE FROM `mainTable` WHERE `songName`=?";                     
                      $stmt = $mysqli->stmt_init();
-                     if(!$stmt->prepare($sql))
-                     {
+                     if(!$stmt->prepare($sql)) {
                          exit();
                      }
                      
                      $stmt->bind_param("s", $oldSong);
                      $stmt->execute();
-                     $result = $stmt->get_result() or die $mysqli->error;
+                     $result = $stmt->get_result();
                      
-                     } 
 
-                     if(!mysqli_error($mysqli)){
+                     if(!(false == $result)){
                          echo "Record successfully deleted from the mainTable!";
                      }
                      else {
@@ -83,23 +86,22 @@
                      //Then, delete from the moods table.
                      $sql = "DELETE FROM `moods` WHERE `songName`=?";                     
                      $stmt = $mysqli->stmt_init();
-                     if(!$stmt->prepare($sql))
-                     {
+                     if(!$stmt->prepare($sql)) {
                          exit();
                      }
                      
                      $stmt->bind_param("s", $oldSong);
                      $stmt->execute();
-                     $result = $stmt->get_result() or die $mysqli->error;
-                     
-                     } 
+                     $result = $stmt->get_result();
+                      
 
-                     if(!mysqli_error($mysqli)){
+                     if(!(false == $result)){
                          echo "Record successfully deleted from the moods table!";
                      }
                      else {
                          echo "There was an error when trying to delete the record from the moods table.";
                      }
+                    } 
                 ?>
         </div>
         

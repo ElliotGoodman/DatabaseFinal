@@ -1,3 +1,19 @@
+<?php if ($_SERVER['HTTPS'] !== 'on') {
+$redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+header("Location: $redirectURL");
+exit;
+}
+if(!session_start()) {
+header("Location: error.php");
+exit;
+}
+$loggedIn = empty($_SESSION['loggedin']) ? false : $_SESSION['loggedin'];
+if (!$loggedIn) {
+header("Location: login.php");
+exit;
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- This document was created on 04 May 2018 by Andrew Krall, 16190080-->
@@ -8,18 +24,20 @@
     ini_set("display_errors", 1);
 ?>
 
-<html>
+<html lang="en">
     
     <head>
-        
+         <meta charset="utf-8">
+    	<link href="app.css" rel="stylesheet" type="text/css">
+    <link href="../jQuery/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <script src="../jQuery/external/jquery/jquery.js"></script>
+    <script src="../jQuery/jquery-ui.min.js"></script>
         <!-- Bootstrap Links -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"><!-- Optional theme -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script><!-- Latest compiled and minified JavaScript -->
         
-        <title>Delete A Song</title> 
-        <meta charset="utf-8"> 
-        
+        <title>Delete A Song</title>         
         <script
   src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="

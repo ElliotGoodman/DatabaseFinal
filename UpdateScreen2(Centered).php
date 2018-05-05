@@ -172,6 +172,10 @@ title="200 characters max. Only alphanumeric characters, spaces and the followin
 <!--update bootun-->
 <input class= "center" name="update" value="Update Song" type="submit">
 </form>
+    
+<?php 
+    require "deleteSong.php";
+    ?>
 
 
 <!--the following is the php for adding to the table via the ADD button-->

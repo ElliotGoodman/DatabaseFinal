@@ -78,6 +78,7 @@ exit;
     <option value="African">African</option>
     <option value="Asian">Asian</option>
     <option value="Avant-garde">Avant-garde</option>
+    <option value="Ballroom">Ballroom dance music</option>
     <option value="Blues">Blues</option>
     <option value="Caribbean and Caribbean-influenced">Caribbean and Caribbean-influenced</option>
     <option value="Comedy">Comedy</option>
@@ -85,24 +86,23 @@ exit;
     <option value="Easy Listening">Easy Listening</option>
     <option value="Difficult Listening">Difficult Listening</option>
     <option value="Electronic">Electronic</option>
+    <option value="Filmi">Filmi</option>
     <option value="Folk">Folk</option>
     <option value="Hip hop">Hip hop</option>
     <option value="Jazz">Jazz</option>
-    <option value="latin">Latin</option>
+    <option value="Incidental Music">Incidental</option>
+    <option value="Latin">Latin</option>
+    <option value="Musical">Musical</option>
+    <option value="Occasional">Occasional music</option>
     <option value="Pop">Pop</option>
     <option value="R&B">Rhythm and Blues</option>
-    <option value="Soul">Soul</option>
+    <option value="Regional or national music">Regional or national music</option>
+    <option value="Religious">Religious</option>
     <option value="Rock">Rock</option>
     <option value="Soca">Soca</option>
-    <option value="Incidental Music">Incidental</option>
-    <option value="Filmi">Filmi</option>
+    <option value="Soul">Soul</option>
+    <option value="Soundtrack">Soundtrack</option>
     <option value="Video Game">Video Game Music</option>
-    <option value="Music Hall">"Music Hall" songs</option>
-    <option value="Showtunes">Showtunes</option>
-    <option value="Ballroom">Ballroom dance music</option>
-    <option value="Religious">Religious</option>
-    <option value="Occasional">Occasional music</option>
-    <option value="Regional and national music">Regional and national music</option>
   </select>
 
 <br><br>

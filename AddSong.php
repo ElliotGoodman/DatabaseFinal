@@ -83,16 +83,16 @@ title="50 characters max. Alphanumeric characters, ', ?, !, and spaces are allow
     <option value="Jazz">Jazz</option>
     <option value="Incidental Music">Incidental</option>
     <option value="Latin">Latin</option>
-    <option value="Music Hall">"Music Hall" songs</option>
+    <option value="Musical">Musical</option>
     <option value="Occasional">Occasional music</option>
     <option value="Pop">Pop</option>
     <option value="R&B">Rhythm and Blues</option>
     <option value="Regional or national music">Regional or national music</option>
     <option value="Religious">Religious</option>
     <option value="Rock">Rock</option>
-    <option value="Showtunes">Showtunes</option>
     <option value="Soca">Soca</option>
     <option value="Soul">Soul</option>
+    <option value="Soundtrack">Soundtrack</option>
     <option value="Video Game">Video Game Music</option>
   </select>
 
@@ -140,7 +140,7 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 
 <input type="text" name="youtubeLink"
 placeholder="Link here"
-pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F]{1,200}"
+pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F\x2D]{1,200}"
 title="200 characters max. Only alphanumeric characters, spaces and the following are allowed: &amp; / : = _ ! ? . -"/>
 <!--colon, ampersand, equals sign, forward slash, period, underscore, hyphen -->
 

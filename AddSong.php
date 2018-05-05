@@ -54,8 +54,8 @@ exit;
 
 <input type="text" name="songName"
 placeholder="Song title here" required
-pattern="[a-zA-Z0-9^\s!?]{1,50}"
-title="50 characters max. Alphanumeric characters, ', ?, !, and spaces are allowed."/> <!--between 1 and 50 alphanumeric characters, space and ! allowed-->
+pattern="[a-zA-Z0-9^\s!?\x28\x29]{1,50}"
+title="50 characters max. Alphanumeric characters, ', ?, !, (, ), and spaces are allowed."/> <!--between 1 and 50 alphanumeric characters, space and ! allowed-->
 
 <br>
 <small>Only alphanumeric characters and spaces are allowed, up to 50</small>

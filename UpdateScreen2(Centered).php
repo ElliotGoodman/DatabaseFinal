@@ -101,7 +101,7 @@ h1{
 <!--The name of the song to change-->
 <p><h4> Type the name of the song you want to update here </h4></p>
 <input type="text" name="oldSongName" placeholder="Song name here" required
-pattern="[a-zA-Z0-9^\s!?]{1,50}" title="50 characters max. Alphanumeric characters, ?, !, and spaces are allowed."/>
+pattern="[a-zA-Z0-9^\s!?\x28\x29]{1,50}" title="50 characters max. Alphanumeric characters, ?, !, and spaces are allowed."/>
 <br>
 
 <!--All the attributes the admin can change-->
@@ -112,7 +112,7 @@ pattern="[a-zA-Z0-9^\s!?]{1,50}" title="50 characters max. Alphanumeric characte
   <div class="column">
 <p><medium>Type its new name here</medium></p>
 <input type="text" name="newSongName" placeholder="New name here"
-pattern="[a-zA-Z0-9^\s!?]{1,50}" title="50 characters max. Alphanumeric characters, ?, !, and spaces are allowed."/>
+pattern="[a-zA-Z0-9^\s!?\x28\x29]{1,50}" title="50 characters max. Alphanumeric characters, ?, !, (, ), and spaces are allowed."/>
 <br>
 <br>
 
@@ -129,30 +129,64 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
   <div class="column">
 <p><medium>Select its new genre here</medium></p>
 <select name="newGenre" id="Genre">
-  <option value="" disabled selected>Choose a genre</option>
-  <option value="Rock">Rock</option>
-  <option value="Soundtrack">Soundtrack</option>
-  <option value="Ukelele">Ukelele</option>
-  <option value="Theatre Nerd">Theatre Nerd</option>
-  <option value="Alternative">Alternative</option>
-  <option value="Pop">Pop</option>
+	<option value="" disabled selected>Choose a genre</option>
+	<option value="African">African</option>
+	<option value="Asian">Asian</option>
+	<option value="Avant-garde">Avant-garde</option>
+	<option value="Ballroom">Ballroom dance music</option>
+	<option value="Blues">Blues</option>
+	<option value="Caribbean and Caribbean-influenced">Caribbean and Caribbean-influenced</option>
+	<option value="Comedy">Comedy</option>
+	<option value="Country">Country</option>
+	<option value="Easy Listening">Easy Listening</option>
+	<option value="Difficult Listening">Difficult Listening</option>
+	<option value="Electronic">Electronic</option>
+	<option value="Filmi">Filmi</option>
+	<option value="Folk">Folk</option>
+	<option value="Hip hop">Hip hop</option>
+	<option value="Jazz">Jazz</option>
+	<option value="Incidental Music">Incidental</option>
+	<option value="Latin">Latin</option>
+	<option value="Musical">Musical</option>
+	<option value="Occasional">Occasional music</option>
+	<option value="Pop">Pop</option>
+	<option value="R&B">Rhythm and Blues</option>
+	<option value="Regional or national music">Regional or national music</option>
+	<option value="Religious">Religious</option>
+	<option value="Rock">Rock</option>
+	<option value="Soca">Soca</option>
+	<option value="Soul">Soul</option>
+	<option value="Soundtrack">Soundtrack</option>
+	<option value="Video Game">Video Game Music</option>
 </select>
 <br>
 <br>
 
 <p><medium>Select its new mood here</medium></p>
 <select name="newMood" id="Mood">
-  <option value="" selected>Choose a mood</option>
-  <option value="Happy">Happy</option>
-  <option value="Epic">Epic</option>
-  <option value="Weird">Weird</option>
-  <option value="Defiant">Defiant</option>
-  <option value="Melancholic">Melancholic</option>
-  <option value="French">French</option>
-  <option value="Alternative">Alternative</option>
-  <option value="Salty">Salty</option>
-  <option value="Lonely">Lonely</option>
-  <option value="Naughty">( ͡° ͜ʖ ͡°)</option>
+	<option value="" disabled selected>Choose a mood</option>
+	<option value="Ambient">Ambient</option>
+	<option value="Bored">Bored</option>
+	<option value="Defiant">Defiant</option>
+	<option value="Encouraging">Encouraging</option>
+	<option value="Epic">Epic</option>
+	<option value="Furious">Furious</option>
+	<option value="Grandiose">Grandiose</option>
+	<option value="Hurt">Hurt</option>
+	<option value="Indifferent">Indifferent</option>
+	<option value="Joyful">Joyful</option>
+	<option value="Lonely">Lonely</option>
+	<option value="Longing">Longing</option>
+	<option value="Melancholic">Melancholic</option>
+	<option value="Romantic">Romantic</option>
+	<option value="Righteous">Righteous</option>
+	<option value="Tranquil">Tranquil</option>
+	<option value="Tired">Tired</option>
+	<option value="Weird">Weird</option>
+	<option value="Villainous">Villainous</option>
+	<option value="Other">Other</option>
+	<option value="None">None</option>
+	<option value="Naughty">( ͡° ͜ʖ ͡°)</option>
 </select>
 <br>
 <br>
@@ -172,10 +206,6 @@ title="200 characters max. Only alphanumeric characters, spaces and the followin
 <!--update bootun-->
 <input class= "center" name="update" value="Update Song" type="submit">
 </form>
-    
-<?php 
-    require "deleteSong.php";
-    ?>
 
 
 <!--the following is the php for adding to the table via the ADD button-->

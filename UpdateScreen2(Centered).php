@@ -150,7 +150,7 @@ title="30 characters max. Only alphanumeric characters, spaces, and the followin
 	<option value="Musical">Musical</option>
 	<option value="Occasional">Occasional music</option>
 	<option value="Pop">Pop</option>
-	<option value="R&B">Rhythm and Blues</option>
+	<option value="Rhythm and Blues">Rhythm and Blues</option>
 	<option value="Regional or national music">Regional or national music</option>
 	<option value="Religious">Religious</option>
 	<option value="Rock">Rock</option>
@@ -226,7 +226,7 @@ if(isset($_POST['update']))
 		if($_POST['oldSongName'] != "")
 		{
 		$oldName = $_POST['oldSongName'];
-		echo "<br>Old name is" . $oldName ;
+		echo "<br>Old name is " . $oldName ;
 			if($_POST['newSongName'] != "")
   			{
   			echo "<br> Song name set to change";
@@ -243,15 +243,14 @@ if(isset($_POST['update']))
 				$artist = $_POST['newArtist'];
 				$query = "UPDATE mainTable SET artist = '$artist' WHERE songName = '$oldName' ;";
 				$result = $mysqli->query($query);
-				echo $_POST['newArtist'];
 				}
 			if($_POST['newGenre'] != "")
 				{
-     		echo "<br>newGenre set to change";
+     				echo "<br>newGenre set to change";
 				$genre = $_POST['newGenre'];
 				$query = "UPDATE mainTable SET genre = '$genre' WHERE songName = '$oldName' ;";
 				$result = $mysqli->query($query);
-     		}
+     				}
 			if($_POST['newMood'] != "")
 				{
 				echo "<br>Mood set to change";

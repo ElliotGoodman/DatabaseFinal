@@ -143,6 +143,8 @@ placeholder="Link here"
 pattern="[a-zA-Z0-9\x3A\x26\x3D?\x2F\x2E\x5F\x2D]{1,200}"
 title="200 characters max. Only alphanumeric characters, spaces and the following are allowed: &amp; / : = _ ! ? . -"/>
 <!--colon, ampersand, equals sign, forward slash, period, underscore, hyphen -->
+<br>
+<small>Do not post a link to a playlist</small>
 
 <br><br>
 <input name="ADD" value="ADD" type="submit">

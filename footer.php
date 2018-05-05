@@ -49,10 +49,10 @@
                                 }else{
                                     echo "<a href='MoodBoard_index.php'>Back to Home</a>";
                                 }
-                            }else{
+                                }else{
                                 $getWholeUrl = "https://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";
                                 
-                                if ($getWholeUrl == "https://naganadel.epizy.com/login.php" || $getWholeUrl == "https://naganadel.epizy.com/MTC.php"){
+                                if ($getWholeUrl == "https://naganadel.epizy.com/login.php" || $getWholeUrl == "https://naganadel.epizy.com/MTC.php" || $getWholeUrl == "https://naganadel.epizy.com/AddSong.php"){
                                    echo "<a href='MoodBoard_index.php'>Back to Home</a>"; 
                                 }
                             }

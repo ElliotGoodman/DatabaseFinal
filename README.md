@@ -122,6 +122,7 @@
 
 #### Andrew Krall
 * Aided Elliot in understanding PHP syntax and structure
-* Wrote the PHP for deletion
-* Aided in bug-checking
+* Wrote the PHP for deletion functionality
+* Aided in bug-checking and structure recommendations
 * Introduced Bootstrap to the project
+* Aided in the writing of MoodBoard_index.php with Elliot

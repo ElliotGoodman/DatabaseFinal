@@ -69,51 +69,59 @@ title="50 characters max. Alphanumeric characters, ', ?, !, and spaces are allow
     <option value="African">African</option>
     <option value="Asian">Asian</option>
     <option value="Avant-garde">Avant-garde</option>
+    <option value="Ballroom">Ballroom dance music</option>
     <option value="Blues">Blues</option>
     <option value="Caribbean and Caribbean-influenced">Caribbean and Caribbean-influenced</option>
     <option value="Comedy">Comedy</option>
     <option value="Country">Country</option>
     <option value="Easy Listening">Easy Listening</option>
+    <option value="Difficult Listening">Difficult Listening</option>
     <option value="Electronic">Electronic</option>
+    <option value="Filmi">Filmi</option>
     <option value="Folk">Folk</option>
     <option value="Hip hop">Hip hop</option>
     <option value="Jazz">Jazz</option>
-    <option value="latin">Latin</option>
+    <option value="Incidental Music">Incidental</option>
+    <option value="Latin">Latin</option>
+    <option value="Music Hall">"Music Hall" songs</option>
+    <option value="Occasional">Occasional music</option>
     <option value="Pop">Pop</option>
     <option value="R&B">Rhythm and Blues</option>
-    <option value="Soul">Soul</option>
-    <option value="Rock">Rock</option>
-    <option value="Soca">Soca</option>
-    <option value="Incidental Music">Incidental</option>
-    <option value="Filmi">Filmi</option>
-    <option value="Video Game">Video Game Music</option>
-    <option value="Music Hall">"Music Hall" songs</option>
-    <option value="Showtunes">Showtunes</option>
-    <option value="Ballroom">Ballroom dance music</option>
+    <option value="Regional or national music">Regional or national music</option>
     <option value="Religious">Religious</option>
-    <option value="Occasional">Occasional music</option>
-    <option value="Regional and national music">Regional and national music</option>
+    <option value="Rock">Rock</option>
+    <option value="Showtunes">Showtunes</option>
+    <option value="Soca">Soca</option>
+    <option value="Soul">Soul</option>
+    <option value="Video Game">Video Game Music</option>
   </select>
 
 <br><br>
 <p>Mood</p>
   <select name="Moods" id="Moods" required>
     <option value="" disabled selected>Choose a mood</option>
-    <option value="Happy">Happy</option>
-    <option value="Epic">Epic</option>
-    <option value="Weird">Weird</option>
-    <option value="Defiant">Defiant</option>
-    <option value="Melancholic">Melancholic</option>
-    <option value="Lonely">Lonely</option>
-    <option value="Rebellious">Rebellious</option>
-    <option value="Furious">Furious</option>
-    <option value="Indifferent">Indifferent</option>
-    <option value="Righteous">Righteous</option>
-    <option value="Bored">Bored</option>
     <option value="Ambient">Ambient</option>
+    <option value="Bored">Bored</option>
+    <option value="Defiant">Defiant</option>
+    <option value="Encouraging">Encouraging</option>
+    <option value="Epic">Epic</option>
+    <option value="Furious">Furious</option>
+    <option value="Grandiose">Grandiose</option>
+    <option value="Hurt">Hurt</option>
+    <option value="Indifferent">Indifferent</option>
+    <option value="Joyful">Joyful</option>
+    <option value="Lonely">Lonely</option>
+    <option value="Longing">Longing</option>
+    <option value="Melancholic">Melancholic</option>
+    <option value="Romantic">Romantic</option>
+    <option value="Righteous">Righteous</option>
+    <option value="Tranquil">Tranquil</option>
     <option value="Tired">Tired</option>
+    <option value="Weird">Weird</option>
+    <option value="Villainous">Villainous</option>
     <option value="Other">Other</option>
     <option value="None">None</option>
+    <option value="Naughty">( ͡° ͜ʖ ͡°)</option>
 </select>
 
 <br><br>
@@ -146,7 +154,7 @@ title="200 characters max. Only alphanumeric characters, spaces and the followin
 <input name="search" value="Back to the MoodBoard" type="submit">
 </form>
 -->
-<?php 
+<?php
 require "footer.php";
       ?>
 
@@ -172,16 +180,16 @@ if(isset($_POST['ADD']))
 
 $songName = $_POST['songName'];
 $songName = $mysqli->real_escape_string($songName);
-      
+
 $genre = $_POST['Genres'];
-$genre = $mysqli->real_escape_string($genre);      
-      
+$genre = $mysqli->real_escape_string($genre);
+
 $artist = $_POST['artist'];
 $artist = $mysqli->real_escape_string($artist);
-      
+
 $mood = $_POST['Moods'];
-$mood = $mysqli->real_escape_string($mood);      
-      
+$mood = $mysqli->real_escape_string($mood);
+
 $link = $_POST['youtubeLink'];
 if($link != ""){
     $link = substr($link, 32);
@@ -191,9 +199,9 @@ if($link != ""){
 }else{
     $link = "";
 }
-      
 
-      
+
+
 $mainQuery = "INSERT INTO mainTable (songName, genre, artist, youtubeLink) VALUES ('$songName','$genre','$artist','$embed');";
 $mainResult = $mysqli->query($mainQuery);
 
@@ -214,6 +222,6 @@ if($moodResult == "TRUE"){
     echo "<script type='text/javascript'>alert('Insertion into the MoodBoard failed. Please try again.');</script>";
 }
 ?>
-  </div> 
+  </div>
 </body>
 </html>

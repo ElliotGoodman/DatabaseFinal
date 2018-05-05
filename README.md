@@ -53,7 +53,7 @@
         * Any visitor of our webpage can add to the database by typing out the title, artist, genre, and mood of a song with the option of including a YouTube link as well. In this way, visitors CREATE records in the database.
         * Visitors who login to our webpage have access to a page where they may UPDATE or DELETE records from the Database.
     * A screencapture of our webpage in action:
-<!--        * [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)-->
+        * [YouTube Link](http://www.youtube.com/watch?v=_Y5NAQtUSTs)
 
 ---
 ## CS2830 Final Project Requirements

@@ -43,11 +43,11 @@
     * Team members: Andrew Krall, Elliot Goodman, and Aaryn Johns
     * See OVERVIEW for a description of the application
     * Schemas of each table:
-        * ![alt text](http://naganadel.epizy.com/images/mainTable.png "mainTable schema")
-        * ![alt text](http://naganadel.epizy.com/images/moods.png "moods schema")
-        * ![alt text](http://naganadel.epizy.com/images/user.png "user schema")
+        * [Schema for mainTable](http://naganadel.epizy.com/images/mainTable.png)
+        * [Schema for mood](http://naganadel.epizy.com/images/moods.png)
+        * [Schema for user](http://naganadel.epizy.com/images/user.png)
     * An ERD for the Database:
-        * ![alt text](http://naganadel.epizy.com/images/ERD.png "MoodBoard ERD")
+        * [ER Diagram for MoodBoard](http://naganadel.epizy.com/images/ERD.png)
     * How MoodBoard CRUD's
         * Any visitor of our webpage can search the database by genre and/or mood. Searches populate a table of the songs that match the search criteria. In this way, visitors READ from the database.
         * Any visitor of our webpage can add to the database by typing out the title, artist, genre, and mood of a song with the option of including a YouTube link as well. In this way, visitors CREATE records in the database.
